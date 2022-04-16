@@ -8,8 +8,9 @@ int main(){
     int mes = 0;
     std::cin>>a>>b>>x;
     while(a <= b){
-        std::cout<<a<<" "<<mes<<std::endl;
-        a=a+x;
+        a=a*(1+x*0.01);
         mes++;
+        std::cout<<a<<" "<<mes<<std::endl;
+
     }
 }

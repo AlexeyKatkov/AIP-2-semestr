@@ -12,7 +12,7 @@ int main(){
     float ch;
     std::cin>>n>>x;
     while(start <=n){
-        int zn = 0;
+        int zn = 1;
         for(int i = 1;i<=start;i++){
             zn = zn * i;
         }
@@ -23,7 +23,7 @@ int main(){
         mn = mn*(-1);
     }
     if ((start - n) == 1){
-        int zn = 0;
+        int zn = 1;
         for(int i = 1;i<=n;i++){
             zn = zn * i;
         }

@@ -5,17 +5,20 @@ using namespace std;
 int main()
 {
 //    11.Вводятся три целых числа. Наибольшее увеличить на 5, наименьшее уменьшить 3.
-    int num1,num2,num3,l;
-    cout << "Vvedite 3 chisla: ";
-    cin >> num1 >> num2 >> num3;
-    int n[]={num1,num2,num3};
-    int min=n[0];
-    int max=n[0];
-    for(int i=1;i<3;i++){
-        if (min > n[i])
-            min = n[i];
-        if (max < n[i])
-            max = n[i];
+    int num;
+    cout << "Введите 1 число: ";
+    cin >> num;
+
+    int min=num;
+    int max=num;
+    for(int i=2;i<=3;i++){
+        cout << "Введите "<< i <<" число: ";
+        cin >> num;
+        if (min > num)
+            min = num;
+        if (max < num)
+            max = num;
     }
     cout << max+5 << " " << min-3;
+
 }

@@ -4,94 +4,44 @@
 
 
 //11.Реализовать   сложение,   вычитание,   умножение,   транспонирование   матриц (разрешается фиксированный размер матриц).
-
-void sum(int ar[3][2]) {
-    int ar1[3][2];
-    std::cout << "Заполните вторую матрицу 3 на 2\n";
+void sum(int ar1[3][2], int ar2[3][2], int ar3[3][2]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 2; j++) {
-            std::cin >> ar1[i][j];
-
+            ar3[i][j] = ar1[i][j] + ar2[i][j];
         }
     }
-
-
-    std::cout << "Их сумма:\n";
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 2; j++) {
-
-            std::cout << ar[i][j] + ar1[i][j] << "\t";
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n";
-
 }
-void sub(int ar[3][2]) {
-    int ar1[3][2];
-    std::cout << "Заполните вторую матрицу 3 на 2\n";
+void sub(int ar1[3][2], int ar2[3][2], int ar3[3][2]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 2; j++) {
-            std::cin >> ar1[i][j];
-
+            ar3[i][j] = ar1[i][j] - ar2[i][j];
         }
     }
-
-    std::cout << "Их разность:\n";
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 2; j++) {
-
-            std::cout << ar[i][j] - ar1[i][j] << "\t";
-        }
-        std::cout << "\n";
-    }
-    std::cout << "\n";
-
 }
-void mult(int ar[3][2]) {
-    std::cout << "Вторая матрица:\n";
-    int ar1[2][3];
-    std::cout << "Заполните вторую матрицу 2 на 3\n";
-    for (int i = 0; i < 2; i++) {
-        for (int j = 0; j < 3; j++) {
-            std::cin >> ar1[i][j];
-
-        }
-    }
-
-
-
-    std::cout << "Их произведение:\n";
+void mult(int ar1[3][2], int ar2[2][3], int ar3[3][3]) {
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-
-            std::cout << ar[i][0] * ar1[0][j] + ar[i][1] * ar1[1][j] << "\t";
+            ar3[i][j] = ar1[i][0] * ar2[0][j] + ar1[i][1] * ar2[1][j];
         }
-        std::cout << "\n";
     }
-    std::cout << "\n";
 
 }
-void transpon(int ar[3][2]) {
-    std::cout << "Транспонированная матрица:\n";
-    for (int j = 0; j < 2; j++) {
-        for (int i = 0; i < 3; i++) {
+void transpon(int ar1[3][2], int ar2[2][3]) {
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 2; j++){
 
-            std::cout << ar[i][j] << "\t";
+            ar2[j][i]= ar1[i][j];
         }
-        std::cout << "\n";
     }
-    std::cout << "\n";
 }
 
 int main() {
-
-    int ar[3][2];
+    setlocale(LC_CTYPE, "");
+    int ar1[3][2], ar2[3][2], ar3[3][2], ar2m_t[2][3], ar3m[3][3];
     std::cout << "Заполните матрицу 3 на 2\n";
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 2; j++) {
-            std::cin>>ar[i][j];
-
+            std::cin >> ar1[i][j];
         }
     }
 
@@ -109,21 +59,71 @@ int main() {
     switch (answer)
     {
     case 1:
-        sum(ar);
+
+        std::cout << "Заполните вторую матрицу 3 на 2\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                std::cin >> ar2[i][j];
+
+            }
+        }
+        sum(ar1, ar2, ar3);
+        std::cout << "Сумма матриц\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                std::cout<<ar3[i][j]<<"\t";                
+            }
+            std::cout<<std::endl;
+        }
+        std::cout << std::endl;
+
         break;
     case 2:
-        sub(ar);
+        std::cout << "Заполните вторую матрицу 3 на 2\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                std::cin >> ar2[i][j];
+
+            }
+        }
+        sub(ar1, ar2, ar3);
+        std::cout << "Разность матриц\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 2; j++) {
+                std::cout << ar3[i][j] << "\t";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
         break;
     case 3:
-        mult(ar);
+        std::cout << "Заполните вторую матрицу 2 на 3\n";
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::cin >> ar2m_t[i][j];
+
+            }
+        }
+        mult(ar1, ar2m_t, ar3m);
+        std::cout << "Произведение матриц\n";
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::cout << ar3m[i][j] << "\t";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
         break;
     case 4:
-        transpon(ar);
+        transpon(ar1,ar2m_t);
+        std::cout << "Транспонированная матрица\n";
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                std::cout << ar2m_t[i][j] << "\t";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << std::endl;
         break;
     }
-
-
-
-
-
 }
